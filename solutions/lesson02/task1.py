@@ -4,4 +4,3 @@ def get_factorial(num: int) -> int:
         factorial *= num
         num -= 1
     return factorial
-

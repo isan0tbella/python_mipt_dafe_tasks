@@ -12,6 +12,4 @@ def get_sum_of_prime_divisors(num: int) -> int:
                 num //= n
         n += 2
 
-    
     return sum_of_divisors
-

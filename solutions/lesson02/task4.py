@@ -10,4 +10,3 @@ def get_multiplications_amount(num: int) -> int:
             multiplications_amount += 1
             num = num - 1
     return multiplications_amount
-
