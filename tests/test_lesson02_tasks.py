@@ -319,3 +319,4 @@ def test_get_sum_of_prime_divisors(num: int, result_expected: int) -> None:
 )
 def test_is_palindrome(num: int, result_expected: bool) -> None:
     assert is_palindrome(num) == result_expected
+
