@@ -7,4 +7,4 @@ def get_doubled_factorial(num: int) -> int:
     else:
         return 1
 
-    return factorial
+   return factorial
