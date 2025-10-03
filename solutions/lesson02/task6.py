@@ -1,15 +1,13 @@
 def get_sum_of_prime_divisors(num: int) -> int:
     sum_of_divisors = 0
-    if num % 2 == 0:
-        sum_of_divisors += 2
-        while num % 2 == 0:
-            num //= 2
-    n = 3
-    while num > 1:
-        if num % n == 0:
-            sum_of_divisors += n
-            while num % n == 0:
-                num //= n
-        n += 2
+    if num == 1:
+        return 0
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            sum_of_divisors += i
+            while num % i == 0:
+                num //= i
+    if sum_of_divisors == 0:
+        return num
 
     return sum_of_divisors

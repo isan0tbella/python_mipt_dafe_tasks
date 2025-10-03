@@ -8,7 +8,6 @@ from solutions.lesson02.task5 import get_gcd
 from solutions.lesson02.task6 import get_sum_of_prime_divisors
 from solutions.lesson02.task7 import is_palindrome
 
-
 @pytest.mark.parametrize(
     "num, result_expected", 
     (
