@@ -5,7 +5,7 @@ def get_nth_digit(num: int) -> int:
     if num < 96:
         if num % 2 == 0:
             place = num - 5
-            num = 10 + ((place - 1) // 2) * 
+            num = 10 + ((place - 1) // 2)
             
             if place % 2 == 1:
                 return num // 10
