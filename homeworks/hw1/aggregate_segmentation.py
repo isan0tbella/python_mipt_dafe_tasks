@@ -29,11 +29,10 @@ def aggregate_segmentation(
     invalid_audios = set()
 
     def make_invalid(aid: str) -> None:
-        if audio_id not in invalid_audios:
-            invalid_audios.add(audio_id)
+        invalid_audios.add(aid)
 
-        if audio_id in valid_audios:
-            valid_audios.pop(audio_id)
+        if aid in valid_audios:
+            valid_audios.pop(aid)
 
     for segment_data in segmentation_data:
         audio_id = segment_data.get("audio_id")
@@ -42,13 +41,14 @@ def aggregate_segmentation(
             continue
 
         segment_id = segment_data.get("segment_id")
-        segment_type = segment_data.get("type")
-        segment_start = segment_data.get("segment_start")
-        segment_end = segment_data.get("segment_end")
 
         if not segment_id:
             make_invalid(audio_id)
             continue
+
+        segment_type = segment_data.get("type")
+        segment_start = segment_data.get("segment_start")
+        segment_end = segment_data.get("segment_end")
 
         if segment_type is None and segment_start is None and segment_end is None:
             valid_audios.setdefault(audio_id, {})
@@ -86,5 +86,6 @@ def aggregate_segmentation(
         valid_audios[audio_id][segment_id] = dict(
             start=segment_start, end=segment_end, type=segment_type
         )
+        
     invalid_audios_lst = list(invalid_audios)
     return valid_audios, invalid_audios_lst
