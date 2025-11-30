@@ -3,8 +3,8 @@ def are_anagrams(word1: str, word2: str) -> bool:
         return False
 
     else:
-        word1_let = [0] * 1000
-        word2_let = [0] * 1000
+        word1_let = [0] * max(ord('z'), ord('Z'))
+        word2_let = [0] * max(ord('z'), ord('Z'))
 
         for i in word1:
             word1_let[ord(i)] += 1

@@ -7,6 +7,7 @@ def count_unique_words(text: str) -> int:
         return 0
 
     words = set()
+    ##можно было через strip(string.punctuation)
     for i in textsp:
         while len(i) > 0 and not i[0].isalnum() and i[0] != "'":
             i = i[1:]
