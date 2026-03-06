@@ -8,13 +8,25 @@ class ShapeMismatchError(Exception):
 def sum_arrays_vectorized(
     lhs: np.ndarray,
     rhs: np.ndarray,
-) -> np.ndarray: ...
+) -> np.ndarray:
+    if lhs.size != rhs.size:
+        raise ShapeMismatchError
+
+    return np.add(lhs, rhs)
 
 
-def compute_poly_vectorized(abscissa: np.ndarray) -> np.ndarray: ...
+def compute_poly_vectorized(abscissa: np.ndarray) -> np.ndarray:
+    return 3 * abscissa**2 + 2 * abscissa + 1
 
 
 def get_mutual_l2_distances_vectorized(
     lhs: np.ndarray,
     rhs: np.ndarray,
-) -> np.ndarray: ...
+) -> np.ndarray:
+    if lhs.shape != rhs.shape:
+        raise ShapeMismatchError
+
+    newl = lhs[:, np.newaxis, :]
+    newr = rhs[np.newaxis, :, :]
+
+    return np.sqrt(np.sum((newl - newr) ** 2, axis=2))
